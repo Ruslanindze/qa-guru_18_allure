@@ -16,8 +16,8 @@ import static org.openqa.selenium.By.linkText;
 
 public class SearchIssueByNameTest extends TestBase {
 
-    private static String repositoryName = "Ruslanindze/qa-guru_18_allure";
-    private static String issueName = "Learning allure-report";
+    private static final String REPOSITORY_NAME = "Ruslanindze/qa-guru_18_allure";
+    private static final String ISSUE_NAME = "Learning allure-report";
 
 
     @Test
@@ -30,17 +30,17 @@ public class SearchIssueByNameTest extends TestBase {
 
         // Ищем репозиторий.
         $("input.header-search-input").click();
-        $("input.header-search-input").sendKeys(repositoryName);
+        $("input.header-search-input").sendKeys(REPOSITORY_NAME);
         $("input.header-search-input").pressEnter();
 
         // Переходим в найденый репозиторий.
-        $("ul.repo-list").$(linkText(repositoryName)).click();
+        $("ul.repo-list").$(linkText(REPOSITORY_NAME)).click();
 
         // Переходим в раздел Issues
         $("a#issues-tab").click();
 
         // Ищем нашу задачу с именем.
-        $(withTagAndText("a", issueName)).shouldBe(exist);
+        $(withTagAndText("a", ISSUE_NAME)).shouldBe(exist);
     }
 
     @Test
@@ -49,23 +49,23 @@ public class SearchIssueByNameTest extends TestBase {
             open(BASE_URL);
         });
 
-        step("Ищем репозиторий " + repositoryName, () -> {
+        step("Ищем репозиторий " + REPOSITORY_NAME, () -> {
             $("input.header-search-input").click();
-            $("input.header-search-input").sendKeys(repositoryName);
+            $("input.header-search-input").sendKeys(REPOSITORY_NAME);
             $("input.header-search-input").pressEnter();
         });
 
         Selenide.sleep(5000);
-        step("Переходим в репозиторий " + repositoryName, () -> {
-            $("ul.repo-list").$(linkText(repositoryName)).click();
+        step("Переходим в репозиторий " + REPOSITORY_NAME, () -> {
+            $("ul.repo-list").$(linkText(REPOSITORY_NAME)).click();
         });
 
         step("Переходим в раздел Issues", () -> {
             $("a#issues-tab").click();
         });
 
-        step("Ищем задачу с именем " + issueName, () -> {
-            $(withTagAndText("a", issueName)).shouldBe(exist);
+        step("Ищем задачу с именем " + ISSUE_NAME, () -> {
+            $(withTagAndText("a", ISSUE_NAME)).shouldBe(exist);
         });
     }
 
@@ -74,9 +74,9 @@ public class SearchIssueByNameTest extends TestBase {
         IssuesPage issuesPage = new IssuesPage();
 
         new IssuesPage().openBasePage(BASE_URL)
-                .searchRepo(repositoryName)
-                .clickByFoundRepo(repositoryName)
+                .searchRepo(REPOSITORY_NAME)
+                .clickByFoundRepo(REPOSITORY_NAME)
                 .clickByChapterIssue()
-                .checkIssueByName(issueName);
+                .checkIssueByName(ISSUE_NAME);
     }
 }
