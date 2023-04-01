@@ -55,7 +55,6 @@ public class SearchIssueByNameTest extends TestBase {
             $("input.header-search-input").pressEnter();
         });
 
-        Selenide.sleep(5000);
         step("Переходим в репозиторий " + REPOSITORY_NAME, () -> {
             $("ul.repo-list").$(linkText(REPOSITORY_NAME)).click();
         });
