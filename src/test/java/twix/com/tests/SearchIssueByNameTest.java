@@ -71,7 +71,7 @@ public class SearchIssueByNameTest extends TestBase {
     public void testWithAnnotatedSteps() {
         IssuesPage issuesPage = new IssuesPage();
 
-        new IssuesPage().openBasePage(BASE_URL)
+        issuesPage.openBasePage(BASE_URL)
                 .searchRepo(REPOSITORY_NAME)
                 .clickByFoundRepo(REPOSITORY_NAME)
                 .clickByChapterIssue()
